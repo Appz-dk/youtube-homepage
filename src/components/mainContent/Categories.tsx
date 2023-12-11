@@ -64,7 +64,7 @@ export const Categoires = ({ categories }: CategoriesProps) => {
 
   
   return (
-    <div ref={containerRef} className="overflow-x-hidden relative">
+    <div ref={containerRef} className="overflow-hidden relative">
       <ul className="flex gap-4 whitespace-nowrap w-max transition-transform" style={{transform: `translateX(-${translateValue}px)`}}>
         {categories.map(c => (
           <li key={c}>
