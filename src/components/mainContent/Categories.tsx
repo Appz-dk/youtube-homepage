@@ -64,7 +64,7 @@ export const Categoires = ({ categories }: CategoriesProps) => {
 
   
   return (
-    <div ref={containerRef} className="overflow-hidden relative">
+    <div ref={containerRef} className="overflow-hidden relative py-1">
       <ul className="flex gap-4 whitespace-nowrap w-max transition-transform" style={{transform: `translateX(-${translateValue}px)`}}>
         {categories.map(c => (
           <li key={c}>
@@ -80,12 +80,12 @@ export const Categoires = ({ categories }: CategoriesProps) => {
       </ul>
 
       {/* Translate buttons */}
-      {showLeftScroll && <div className="absolute top-1/2 -translate-y-1/2 left-0 w-24 h-[105%] bg-gradient-to-r from-white from-50% to-transparent">
+      {showLeftScroll && <div className="absolute top-1/2 -translate-y-1/2 left-0 w-24 h-full bg-gradient-to-r from-white from-50% to-transparent">
         <Button size="icon" variant="ghost" className="h-full w-auto aspect-square p-1.5" onClick={onTranslateLeft}>
           <ChevronLeft />
         </Button>  
       </div>}
-      {showRightScroll && <div className="absolute top-1/2 -translate-y-1/2 right-0 w-24 h-[105%] bg-gradient-to-l from-white from-50% to-transparent">
+      {showRightScroll && <div className="absolute top-1/2 -translate-y-1/2 right-0 w-24 h-full bg-gradient-to-l from-white from-50% to-transparent">
         <Button size="icon" variant="ghost" className="h-full w-auto aspect-square p-1.5 ml-auto" onClick={onTranslateRight}>
           <ChevronRight />
         </Button>  

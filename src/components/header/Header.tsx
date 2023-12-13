@@ -16,7 +16,7 @@ export const Header = () => {
   }
 
   return (
-    <div className="flex justify-between gap-8 lg:gap-16 py-2 mb-4 mx-4">
+    <div className="flex justify-between gap-8 lg:gap-16 py-3 mx-4">
 
       {!showMobileSearch && <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
         <Button variant="ghost" size="icon"><Menu className="w-6 h-6" /></Button>
