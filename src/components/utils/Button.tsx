@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge"
 import { VariantProps, cva } from "class-variance-authority"
 
 
-const buttonStyles = cva(["transition-colors"], {
+export const buttonStyles = cva(["transition-colors"], {
   variants: {
     size: {
       default: ["rounded-md", "flex", "items-center", "justify-center"],
