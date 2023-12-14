@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useState } from "react"
+import { ReactNode, createContext, useContext, useEffect, useState } from "react"
 
 
 type TSidebarContext = {
@@ -31,6 +31,21 @@ export function SidebarProvider({ children }: SidebarProviderProps) {
   const onClose = () => {
     isSmallScreen() ? setIsSmallOpen(false) : setIsLargeOpen(false)
   }
+
+  useEffect(() => {
+    // https://phuoc.ng/collection/this-vs-that/resize-event-vs-resize-observer/
+    const resizeHandler = () => {
+      if (!isSmallScreen()) {
+        setIsSmallOpen(false)
+      }
+    }
+    
+    window.addEventListener("resize", resizeHandler)
+
+    return () => {
+      window.removeEventListener("resize", resizeHandler)
+    }
+  }, [])
 
   return (
     <SidebarContext.Provider value={{
