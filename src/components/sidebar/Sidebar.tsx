@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { SmallSidebarItem } from "./SmallSidebarItem"
 import { LargeSidebarSection } from "./LargeSidebarSection"
@@ -6,7 +6,16 @@ import { largeScreenSectionFour, largeScreenSectionOne, largeScreenSectionThree,
 
 
 export const Sidebar = () => {
-  const [isActive, setIsActive] = useState("Home")
+  const [activePath, setActivePath] = useState("/")
+
+  // This is just for demonstation - Better to use React Router etc.
+  useEffect(() => {
+    let URI = window.location.pathname
+    if (window.location.search) {
+      URI += window.location.search
+    }
+    setActivePath(URI)
+  }, [window.location.pathname])
 
   return (
     <>
@@ -19,13 +28,13 @@ export const Sidebar = () => {
       {/*Sidebar for large screens & pop-in for small screens */}
       <aside className="w-52 absolute lg:sticky hidden lg:flex top-0 flex-col gap-2 pb-4 overflow-y-auto scrollbar-hidden">
         {/* Section One */}
-        <LargeSidebarSection items={largeScreenSectionOne} isActive={isActive} />
+        <LargeSidebarSection items={largeScreenSectionOne} activePath={activePath} />
         {/* Section Two */}
-        <LargeSidebarSection items={largeScreenSectionTwo} isActive={isActive} visibleItemsCount={5} />
+        <LargeSidebarSection items={largeScreenSectionTwo} activePath={activePath} visibleItemsCount={5} />
         {/* Section Three */}
-        <LargeSidebarSection title="Subscriptions" items={largeScreenSectionThree} isActive={isActive} visibleItemsCount={5} />
+        <LargeSidebarSection title="Subscriptions" items={largeScreenSectionThree} activePath={activePath} visibleItemsCount={5} />
         {/* Section Three */}
-        <LargeSidebarSection title="Explore" items={largeScreenSectionFour} isActive={isActive} visibleItemsCount={5} />
+        <LargeSidebarSection title="Explore" items={largeScreenSectionFour} activePath={activePath} visibleItemsCount={5} />
       </aside>
     </>
   ) 

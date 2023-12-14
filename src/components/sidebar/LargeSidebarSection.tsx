@@ -8,19 +8,20 @@ type LargeSidebarSectionPorps = {
   title?: string;
   visibleItemsCount?: number;
   items: TLargeSidebarItem[],
-  isActive?: string;
+  activePath?: string;
 }
 
-export const LargeSidebarSection = ({ title, visibleItemsCount = Number.POSITIVE_INFINITY, items, isActive }: LargeSidebarSectionPorps) => {
+export const LargeSidebarSection = ({ title, visibleItemsCount = Number.POSITIVE_INFINITY, items, activePath }: LargeSidebarSectionPorps) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const visibleItems = isExpanded ? items : items.slice(0, visibleItemsCount)
   const showExpandBtn = items.length > visibleItemsCount
+  console.log(activePath)
 
   return (
     <div className="border-b p-2">
       {title && <div className="text-sm ml-4 my-1">{title}</div>}
       {visibleItems.map(i => (
-        <LargeSidebarItem key={i.title} isActive={i.title === isActive} IconOrImgUrl={i.IconOrImgUrl} title={i.title} url={i.url} />
+        <LargeSidebarItem key={i.title} isActive={!!activePath && i.url.endsWith(activePath)} IconOrImgUrl={i.IconOrImgUrl} title={i.title} url={i.url} />
       ))}
       {showExpandBtn && (
         <Button
