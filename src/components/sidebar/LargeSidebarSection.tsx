@@ -15,7 +15,6 @@ export const LargeSidebarSection = ({ title, visibleItemsCount = Number.POSITIVE
   const [isExpanded, setIsExpanded] = useState(false)
   const visibleItems = isExpanded ? items : items.slice(0, visibleItemsCount)
   const showExpandBtn = items.length > visibleItemsCount
-  console.log(activePath)
 
   return (
     <div className="border-b p-2">
