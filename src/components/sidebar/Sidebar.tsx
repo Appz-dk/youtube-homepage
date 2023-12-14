@@ -22,7 +22,6 @@ export const Sidebar = () => {
   // }, [window.location.pathname])
 
   const onPathChange = (path: string) => {
-    console.log(path)
     setActivePath(path)
   }
 
