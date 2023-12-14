@@ -10,10 +10,11 @@ type LargeSidebarSectionPorps = {
   visibleItemsCount?: number;
   items: TLargeSidebarItem[],
   activePath?: string;
-  isLastSection?: boolean
+  isLastSection?: boolean;
+  onPathChange: (path: string) => void
 }
 
-export const LargeSidebarSection = ({ title, visibleItemsCount = Number.POSITIVE_INFINITY, items, activePath, isLastSection }: LargeSidebarSectionPorps) => {
+export const LargeSidebarSection = ({ title, visibleItemsCount = Number.POSITIVE_INFINITY, items, activePath, isLastSection, onPathChange }: LargeSidebarSectionPorps) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const visibleItems = isExpanded ? items : items.slice(0, visibleItemsCount)
   const showExpandBtn = items.length > visibleItemsCount
@@ -27,7 +28,8 @@ export const LargeSidebarSection = ({ title, visibleItemsCount = Number.POSITIVE
           isActive={!!activePath && activePath.endsWith(i.url)} 
           IconOrImgUrl={i.IconOrImgUrl} 
           title={i.title} 
-          url={`${baseUrl}${i.url}`} 
+          url={`${baseUrl}/#${i.url}`}
+          onClick={onPathChange} 
         />
       ))}
       {showExpandBtn && (
