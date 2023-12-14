@@ -16,7 +16,7 @@ export const Searchbar = ({ showMobileSearch, onHideMobileSearch}: SearchbarProp
           </Button>
         )}
         <div className="flex items-center flex-grow max-w-lg">
-          <input className="w-full py-2 rounded-s-full outline-none pl-4 pr-2 border border-secondary-border shadow-inner focus-visible:border-blue-500" type="search" placeholder="Search" />
+          <input className="w-full py-2 rounded-s-full outline-none pl-4 pr-2 border border-secondary-border shadow-inner focus-visible:border-blue-500" type="search" placeholder="Search (not implemented)" />
           <Button className="inline-flex flex-shrink-0 bg-gray-100 px-5 py-2.5 rounded-e-full border border-secondary-border border-s-0">
             <Search className="w-5 h-5 text-neutral-500"/>
           </Button>
