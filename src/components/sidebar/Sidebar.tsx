@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import { SmallSidebarItem } from "./SmallSidebarItem"
 import { LargeSidebarSection } from "./LargeSidebarSection"
