@@ -5,6 +5,7 @@ import { LargeSidebarSection } from "./LargeSidebarSection"
 import { largeScreenSectionFour, largeScreenSectionOne, largeScreenSectionThree, largeScreenSectionTwo, smallScreenSidebar } from "./sidebarSections"
 import { useSidebarContext } from "../../context/SidebarContext"
 import { MenuAndLogo } from "../header/MenuAndLogo"
+import { baseUrl } from "../../constants/constants"
 
 
 export const Sidebar = () => {
@@ -17,6 +18,7 @@ export const Sidebar = () => {
     if (window.location.search) {
       URI += window.location.search
     }
+    console.log(URI)
     setActivePath(URI)
   }, [window.location.pathname])
 
@@ -26,7 +28,7 @@ export const Sidebar = () => {
       {/* Sidebar for small screens */}
       <aside className={`sticky top-0 p-2 flex flex-col gap-1 overflow-y-auto scrollbar-hidden ${isLargeOpen ? "lg:hidden" : "lg:flex"}`}>
         {smallScreenSidebar.map(i => (
-          <SmallSidebarItem key={i.title} Icon={i.Icon} title={i.title} url={i.url} />
+          <SmallSidebarItem key={i.title} Icon={i.Icon} title={i.title} url={`${baseUrl}${i.url}`} />
           ))}
       </aside>
       {/* Overlay for small sidebar */}

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "../utils/Button";
 import { TLargeSidebarItem } from "./sidebarSections";
 import { LargeSidebarItem } from "./LargeSidebarItem";
+import { baseUrl } from "../../constants/constants";
 
 type LargeSidebarSectionPorps = {
   title?: string;
@@ -21,7 +22,13 @@ export const LargeSidebarSection = ({ title, visibleItemsCount = Number.POSITIVE
     <div className={`p-2 ${isLastSection ? "" : "border-b"}`}>
       {title && <div className="text-sm ml-4 my-1">{title}</div>}
       {visibleItems.map(i => (
-        <LargeSidebarItem key={i.title} isActive={!!activePath && i.url.endsWith(activePath)} IconOrImgUrl={i.IconOrImgUrl} title={i.title} url={i.url} />
+        <LargeSidebarItem 
+          key={i.title} 
+          isActive={!!activePath && activePath.endsWith(i.url)} 
+          IconOrImgUrl={i.IconOrImgUrl} 
+          title={i.title} 
+          url={`${baseUrl}${i.url}`} 
+        />
       ))}
       {showExpandBtn && (
         <Button

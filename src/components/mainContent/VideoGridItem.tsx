@@ -2,6 +2,7 @@ import { ElementRef, useEffect, useRef, useState } from "react"
 import { TVideo } from "../../data/mainData"
 import { formatDuration } from "../../utils/durationFormatter"
 import { formatPostedAt } from "../../utils/postedAtFormatter"
+import { baseUrl } from "../../constants/constants"
 
 
 type VideoGridItemProps = TVideo
@@ -23,7 +24,7 @@ export const VideoGridItem = ({ id, channel, duration, postedAt, thumbnailUrl, t
   
   return (
     <div className="flex flex-col gap-3" onMouseEnter={() => setIsVideoPlaying(true)} onMouseLeave={() => setIsVideoPlaying(false)}>
-      <a href={`/watch?v=${id}`} className="relative">
+      <a href={`${baseUrl}/watch?v=${id}`} className="relative">
         <div className="rounded-lg aspect-video">
          <img src={thumbnailUrl} className={`block w-full h-full object-cover transition-[border-radius] duration-200 ${isVideoPlaying ? "rounded-none" : "rounded-lg"}`}/>
         </div>
@@ -40,15 +41,15 @@ export const VideoGridItem = ({ id, channel, duration, postedAt, thumbnailUrl, t
       </a>
       <div className="grid grid-cols-[auto,1fr] gap-4">
         <div className="w-8 h-8 flex-shrink-0">
-          <a href={`/@${channel.id}`}>
+          <a href={`${baseUrl}/@${channel.id}`}>
             <img src={channel.profileUrl} className="block w-full h-full object-cover rounded-full"/>
           </a>
         </div>
         <div>
-          <a href={`/watch?v=${id}`} className="line-clamp-2 text-sm font-semibold leading-5">
+          <a href={`${baseUrl}/watch?v=${id}`} className="line-clamp-2 text-sm font-semibold leading-5">
             {title}
           </a>
-          <a href={`/@${channel.id}`} className="text-xs text-neutral-400">
+          <a href={`${baseUrl}/@${channel.id}`} className="text-xs text-neutral-400">
             {channel.name}
           </a>
           <div className="text-xs text-neutral-400 flex gap-1 items-center">
