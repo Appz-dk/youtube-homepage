@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Bell, Menu, Mic, Search, Upload, User } from "lucide-react"
+import { Bell, Mic, Search, Upload, User } from "lucide-react"
 
 import { Button } from "../utils/Button"
 import { Searchbar } from "./Searchbar"
